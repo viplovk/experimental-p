@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom properties for the dark editorial theme */
+:root {
+  --background: #101010;
+  --secondary-background: #181818;
+  --surface: #222222;
+  --primary-text: #F1EDE4;
+  --secondary-text: #A9A49A;
+  --accent: #B49A70;
+  --muted-borders: rgba(241, 237, 228, 0.12);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --animation-duration: 0s !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6B6B6B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Focus visible state */
+:focus-visible {
+  outline: 2px var(--accent) solid;
+  outline-offset: 2px;
+}
+
+/* Custom cursor container */
+#cursor-container {
+  pointer-events: none;
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+/* Custom cursor element */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.cursor-dot.expanded {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot {
+    transition: none !important;
+  }
+}
